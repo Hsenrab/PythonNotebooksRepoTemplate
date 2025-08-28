@@ -1,0 +1,29 @@
+# Essential data science packages
+pandas
+numpy
+matplotlib
+
+# Jupyter ecosystem
+jupyter
+notebook
+jupyterlab
+ipykernel
+
+# Development tools
+pytest
+nbmake
+nbconvert
+pre-commit
+nbstripout
+
+# Utility packages
+python-dotenv
+requests
+
+# Code quality
+black
+isort
+flake8
+
+# Documentation
+markdown
