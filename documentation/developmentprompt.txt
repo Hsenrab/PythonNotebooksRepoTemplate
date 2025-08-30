@@ -3,17 +3,17 @@
 Follow the "Step-by-Step Plan" in `specification.md`. Use the copilot instructions for style and approach.
 
 ## Process:
-1. **Identify**: Next incomplete phase in specification.md
+1. **Identify**: Next incomplete step in specification.md state to the user. A step is a single bullet point.
 2. **Clarify**: Ask any questions needed before implementing
-3. **Implement**: Make minimal, educational changes for that phase
+3. **Implement**: Make minimal, educational changes for that step
 4. **Test**: Run relevant tests and report results
 5. **Manual Check**: Suggest manual testing steps for user to verify
 6. **Pause**: MANDATORY pause - wait for explicit user confirmation before proceeding
 7. **Verify**: Only mark ✅ in specification.md after user confirms completion
-8. **Continue**: Move to next phase only after user approval
+8. **Continue**: Move to next step only after user approval
 
 ## Testing Guidelines:
-- **Always suggest manual verification steps** for each phase
+- **Always suggest manual verification steps** for each step
 - Provide specific commands users can run to test
 - Include expected outputs and common failure scenarios
 - Validate that changes integrate with existing components
@@ -21,8 +21,7 @@ Follow the "Step-by-Step Plan" in `specification.md`. Use the copilot instructio
 ## Remember:
 - Educational focus over completeness
 - Simple, template-ready code
-- Use 🎯, 💡, ❓ response format
-- One phase at a time
+- One step at a time
 - **NEVER mark phases complete without user confirmation**
 - Ask clarifying questions if anything is unclear
 - Suggest manual testing before moving forward

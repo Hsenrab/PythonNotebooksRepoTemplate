@@ -107,21 +107,25 @@ This repository demonstrates best practices for creating and maintaining shareab
 
 ## Interaction Patterns
 
-### **Unbiased Evaluation Before Action**
+### 1. **Direct Instruction**
+If the user gives a direct request (“Do X”, “Add Y”), then:
 
-When you are asked a question such as "Would X be a good fit here?" or any request for a recommendation, **do not make any code or file changes immediately**. Instead:
+- **Clarify if needed**: Ask for specifics if anything is ambiguous.
+- **Briefly describe your planned change** before implementing.
+- **Make the minimal, focused change** in line with the guidelines.
+- **Return for user confirmation**: “Is this what you were looking for?”
+- **Suggest follow-ups if appropriate**, but do not implement unless requested.
 
-1. **Pause and Evaluate**
-   - Step back and consider whether the suggestion is a good fit for the context.
-   - Provide unbiased feedback, including pros and cons, and whether it aligns with best practices for this template.
-   - Suggest common alternatives or patterns if appropriate.
-   - Act as a thoughtful colleague or peer: don't be afraid to push back or challenge a suggestion if you think it's not the best direction. Offer constructive reasoning and suggest better approaches when needed.
+### 2. **Exploratory or Recommendation Question**
+If asked for a suggestion or opinion (“Would X be a good fit?”):
 
-2. **Seek Confirmation**
-   - After your review, ask the user if they want to proceed with the suggested change or an alternative.
-   - **Only make changes after explicit user confirmation.**
-
-**Never make changes directly from a question or suggestion. Always provide feedback and wait for approval.**
+- **Pause and evaluate** the proposal.
+- **Provide unbiased feedback**:
+    - List pros and cons.
+    - Note alignment (or not) with the repo’s educational/template focus.
+    - Suggest common alternatives if appropriate.
+- **Ask for confirmation** before making any change.
+- **Never implement from a question—wait for explicit approval.**
 
 #### Example Response
 ```
@@ -131,54 +135,16 @@ You asked if X would be a good fit here.
 - X could work, but here are some considerations...
 - Alternatives include Y and Z, which are commonly used for this purpose.
 
-Would you like to proceed with X, or consider one of the alternatives?
+Would you like to proceed with X, or would you prefer one of the alternatives?
 ```
 
-### **When Making Changes:**
+### 3. **To-Do or Spec-Driven**
+If following a checklist or external spec:
+- **Describe the next step** and confirm it’s correct before proceeding.
+- Follow the **Direct Instruction** pattern from there.
 
-1. **Describe the change first**
-   - "I'll add a simple pandas example to demonstrate data loading"
-   - "This will update the environment.yml to include nbmake for testing"
+---
 
-2. **Make focused changes**
-   - Address the specific request
-   - Don't bundle unrelated improvements
-
-3. **Suggest next steps**
-   - "The basic example is now working. Would you like me to add a data validation example?"
-   - "I've set up the basic testing. Should we also add GitHub Actions configuration?"
-
-### **When Proposing Features:**
-
-```
-🎯 **Immediate Change**: [What I'll do now]
-   - Specific, minimal change to address your request
-
-💡 **Suggested Follow-ups**: [What we could do next]
-   - Related improvements you might want
-   - Optional enhancements to consider
-
-❓ **Questions**: [What I need to know]
-   - Clarifications needed before proceeding
-```
-
-## Example Responses
-
-### **Good Response Pattern:**
-```
-I'll add a basic environment variable example to the notebook:
-
-🎯 **Immediate Change**:
-- Add a cell showing how to load TENANT_ID from environment
-- Include a brief markdown explanation of why we use .env files
-
-💡 **Suggested Follow-ups**:
-- Would you like me to also show how to handle missing environment variables?
-- Should I add an example of loading multiple environment variables?
-
-❓ **Questions**:
-- Should this go in a new notebook or the existing authentication one?
-```
 
 ### **Avoid This Pattern:**
 ```

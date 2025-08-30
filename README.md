@@ -15,6 +15,12 @@ A template repository demonstrating best practices for creating and maintaining 
 
 This repository demonstrates essential practices for **shareable notebook development**:
 
+### 📁 **Directory Structure**
+- **notebooks/** - All Jupyter notebooks
+- **tests/** - Automated testing
+- **utils/** - Utility modules (like authentication)
+- **scripts/** - Helper scripts
+
 ### 📋 **Quality Assurance**
 - **Automated testing** - Ensure notebooks execute successfully
 - **Notebook cleaning** - Remove outputs and metadata before sharing
@@ -68,7 +74,7 @@ This repository demonstrates essential practices for **shareable notebook develo
 
 4. **Test Everything Works**
    ```bash
-   jupyter notebook simple_demo_notebook.ipynb
+   jupyter notebook notebooks/simple_demo_notebook.ipynb
    # Run all cells to verify setup
    ```
 
@@ -93,10 +99,10 @@ bash setup_hooks.sh  # macOS/Linux
 ### **Manual Cleaning:**
 ```bash
 # Clean a specific notebook
-nbstripout simple_demo_notebook.ipynb
+nbstripout notebooks/simple_demo_notebook.ipynb
 
 # Clean all notebooks
-nbstripout *.ipynb
+nbstripout notebooks/*.ipynb
 ```
 
 ## 🔧 Environment Variables Setup
