@@ -209,5 +209,92 @@ The `credential` object returned works seamlessly with all Azure AI Foundry serv
 4. **Version Control** - Clean, professional git history
 5. **Documentation** - Clear explanations for end users
 6. **CI/CD** - Automated quality checks before sharing
+7. **Branch Protection** - Ensure tests pass before merging changes
 
 Perfect for teams sharing data science workflows, educational content, or client deliverables.
+
+## 🔒 Setting Up Repository Rulesets
+
+Protect your main branch by requiring tests to pass before merging pull requests using GitHub's Repository Rulesets feature. This ensures all notebooks remain functional and prevents broken code from being merged.
+
+### Setting Up GitHub Repository Rulesets
+
+1. **Navigate to Repository Settings**
+   - Go to your repository on GitHub
+   - Click on "Settings" in the top navigation bar
+
+2. **Create a Ruleset**
+   - In the left sidebar, click on "Rules" or "Rulesets"
+   - Click "Add rule" or "New ruleset"
+   - Select "Branch ruleset" (GitHub offers two types: branch rulesets and tag rulesets)
+   - Name your ruleset (e.g., "Main Branch Protection")
+
+3. **Configure Bypass List (Optional)**
+   - Click "Add bypass" to specify roles, teams, or apps that can bypass these rules
+   - For most cases, leave this empty to ensure maximum protection
+
+4. **Configure Target Branches**
+   - Click "Add target" to specify which branches should be protected
+   - Enter `main` to protect your main branch
+   - You can also use patterns like `release/*` to protect all release branches
+
+5. **Configure Branch Rules**
+   - Under the "Rules" section, select the protection rules you want to apply:
+
+   **Essential rules to enable:**
+   - ☑️ **Restrict deletions**: Prevent deletion of matching refs
+   - ☑️ **Block force pushes**: Prevent users with push access from force pushing
+   - ☑️ **Require a pull request before merging**: Require all commits be made to a non-target branch and submitted via a PR
+   - ☑️ **Require status checks to pass**: This is critical for requiring tests to pass
+
+     **Important**: When you first enable this option:
+     - You'll see "No required checks" or "No checks have been added"
+     - Click "Add checks" to see available status checks
+     - If "Notebook Tests" doesn't appear in the list, you need to:
+       1. Push your code with the workflow file to GitHub
+       2. Run the workflow at least once (via push or manual trigger)
+       3. Return to this settings page after the workflow has run
+       4. Then "Notebook Tests" will appear as an available status check
+
+     **Additional status check options:**
+     - Check "Require branches to be up to date before merging" to ensure PRs include the latest code
+     - You can also manually type a status check name if you know it, even if it hasn't run yet
+     - Consider checking "Hide additional settings" to see more options
+
+   **Additional rules to consider:**
+   - ☐ **Restrict creations**: Only allow users with bypass permission to create matching refs
+   - ☐ **Restrict updates**: Only allow users with bypass permission to update matching refs
+   - ☐ **Require linear history**: Prevent merge commits from being pushed
+   - ☐ **Require deployments to succeed**: Choose environments that must be successfully deployed
+   - ☐ **Require signed commits**: Commits pushed must have verified signatures
+   - ☐ **Require code scanning results**: Enable code scanning checks (if using GitHub Advanced Security)
+
+6. **Save the Ruleset**
+   - Click "Create" at the bottom of the page to save and activate your ruleset
+
+
+### What This Accomplishes
+
+- ✅ **Automated Testing**: All pull requests run the "Notebook Tests" workflow
+- ✅ **Quality Gate**: PRs cannot be merged until tests pass
+- ✅ **Up-to-Date Code**: Ensures branches are current before merging
+- ✅ **Code Review**: Requires approval from designated experts
+- ✅ **Protection**: Prevents direct pushes, force pushes, and branch deletions
+- ✅ **Granular Control**: Fine-grained permissions for who can bypass rules
+- ✅ **Enhanced Security**: More comprehensive protection options
+
+This ensures your notebook repository maintains high-quality, functional notebooks that execute correctly across all changes.
+
+### Tag Rulesets (Optional)
+
+For repositories that use versioning with tags (e.g., v1.0.0, v2.1.0), you can also create a Tag ruleset:
+
+1. Follow the same process as above, but select **"Tag ruleset"** instead of "Branch ruleset"
+2. Configure the tag pattern to protect (e.g., `v*` to protect all version tags)
+3. Enable rules like:
+   - **Require signed tags**: Ensures tags are cryptographically signed
+   - **Block tag deletions**: Prevents removal of released versions
+   - **Block tag creations**: Limits who can create official version tags
+   - **Require status checks**: Ensures tags are only created on validated code
+
+Tag rulesets are especially useful for repositories where releases are created from tags, ensuring that only properly tested and approved code gets released.
