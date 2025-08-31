@@ -72,23 +72,17 @@ This repository demonstrates essential practices for **shareable notebook develo
    bash setup_hooks.sh
    ```
 
-4. **Test Everything Works**
-   ```bash
-   jupyter notebook notebooks/simple_demo_notebook.ipynb
-   # Run all cells to verify setup
-   ```
-
 ## 🧹 Git Hooks and Notebook Cleaning
 
 This template automatically cleans notebooks before commits to ensure professional sharing standards.
 
 ### **What Gets Cleaned:**
+
 - **Notebook outputs**: Removed to reduce file size and avoid sensitive data
 - **Execution metadata**: Cleared for clean diffs
-- **Code formatting**: Black formatting applied to Python code
-- **Import sorting**: isort organizes imports consistently
 
 ### **Setup:**
+
 ```bash
 # Run the setup script (installs pre-commit hooks)
 setup_hooks.bat  # Windows
@@ -97,6 +91,7 @@ bash setup_hooks.sh  # macOS/Linux
 ```
 
 ### **Manual Cleaning:**
+
 ```bash
 # Clean a specific notebook
 nbstripout notebooks/simple_demo_notebook.ipynb
@@ -117,6 +112,7 @@ This template uses environment variables to keep configuration separate from cod
    ```
 
 2. **Edit `.env` with your values:**
+
    ```bash
    # Example .env file contents
    PROJECT_NAME=my-analysis
@@ -126,6 +122,7 @@ This template uses environment variables to keep configuration separate from cod
    ```
 
 3. **Use in notebooks:**
+
    ```python
    import os
    from dotenv import load_dotenv
@@ -135,6 +132,7 @@ This template uses environment variables to keep configuration separate from cod
    ```
 
 ### **Security Notes:**
+
 - `.env` files are automatically ignored by git
 - Never commit credentials to version control
 - Use defaults as fallbacks: `os.getenv('VAR', 'default')`
@@ -148,6 +146,7 @@ The notebooks in this lab use a helper module (`azure_auth_helper.py`) that hand
 ### ⚠️ Important: User Permissions Required
 
 **This authentication uses YOUR user account permissions**, so you need to ensure:
+
 - You have required permissions (**Contributor** or **Owner** is overkill but the easiest way to ensure it for learning purposes)
 - You have permissions to create and manage Azure AI Foundry resources
 - You have access to deploy models and create endpoints
@@ -155,6 +154,7 @@ The notebooks in this lab use a helper module (`azure_auth_helper.py`) that hand
 ### 🔧 Authentication Options:
 
 **Option 1: Browser Authentication**
+
 ```python
 # Opens browser for interactive login
 credential = authenticate_azure(
@@ -164,6 +164,7 @@ credential = authenticate_azure(
 ```
 
 **Option 2: Device Code**
+
 ```python
 # Provides a code to enter on another device
 credential = authenticate_azure(
@@ -174,7 +175,6 @@ credential = authenticate_azure(
 
 **Option 3: Use az login**
 Alternatively handle authentication yourself by installing the azure cli and running az login.
-
 
 ### ✅ What This Gives You:
 
